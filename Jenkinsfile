@@ -20,9 +20,26 @@ pipeline {
         }
         stage('Send Email') {
           steps {
-            mail(subject: 'test me jenkins', body: 'this is a test', replyTo: 'test', to: 'test')
+            mail(subject: 'test me jenkins', body: 'this is a test', to: 'test')
+            emailext(subject: 'extend mail', body: 'exeten mail', attachLog: true, to: 'test')
           }
         }
+      }
+    }
+    stage('Wait') {
+      steps {
+        input(message: 'Approved', submitter: 'test')
+      }
+    }
+    stage('Send Mail2') {
+      steps {
+        mail(subject: 'Deploy', body: 'boyd')
+        emailext(subject: 'Deply', body: 'deploy', attachLog: true, to: 'real')
+      }
+    }
+    stage('deploya') {
+      steps {
+        input(message: 'deploy a', submitter: 'real')
       }
     }
   }
