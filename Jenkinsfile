@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Send Email') {
           steps {
-            mail(subject: 'test me jenkins', body: 'this is a test')
+            mail(subject: 'test me jenkins', body: 'this is a test', replyTo: 'test', to: 'test')
           }
         }
       }
