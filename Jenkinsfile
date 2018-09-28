@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Send Email') {
           steps {
-            mail(subject: 'test me jenkins', body: 'this is a test', to: 'test')
+            mail(subject: 'test me jenkins', body: 'this is a test', to: 'josepato@linkaform.com')
             emailext(subject: 'extend mail', body: 'exeten mail', attachLog: true, to: 'test')
           }
         }
@@ -33,7 +33,7 @@ pipeline {
     }
     stage('Send Mail2') {
       steps {
-        mail(subject: 'Deploy', body: 'boyd')
+        mail(subject: 'Deploy', body: 'boyd', to: 'josepato@linkaform.com')
         emailext(subject: 'Deply', body: 'deploy', attachLog: true, to: 'real')
       }
     }
